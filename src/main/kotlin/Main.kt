@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main() {
     val str = readln()
     //println(zadacha1((str)))
     println(zadacha3(str.toInt()))
@@ -34,15 +34,16 @@ fun zadacha2(string: String) {
 }
 
 fun zadacha3(d: Int): Int {
+    var d = d
     var bin = 0
     var rank = 1
     var mod: Int
-    var res = d
-    while (res > 0) {
-        mod = res % 2
-        res = res / 2
-        bin = bin + mod * rank
-        rank = rank * 10
+    rank = 1
+    while (d > 0) {
+        mod = d % 2
+        d /= 2
+        bin += mod * rank
+        rank *= 10
     }
-    return res
+    return bin
 }
