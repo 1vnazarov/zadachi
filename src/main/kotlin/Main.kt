@@ -94,30 +94,34 @@ fun zadacha3(d: Int): Int {
 }
 
 fun zadacha4(string: String): Float {
-    var op = ""
-    var n1 = ""
-    var n2 = ""
+    var num1Str = ""
+    var num2Str = ""
+    var op = ' '
+    var isNum1 = true
+
     for (char in string.replace(" ", "")) {
-        if (n1 == "") {
-            n1 += char
-        } else {
-            if (op != "") {
-                n2 += char
+        if (char.isDigit() || char == '.') {
+            if (isNum1) {
+                num1Str += char
             } else {
-                op = char.toString()
+                num2Str += char
             }
+        } else if (char in setOf('+', '-', '*', '/')) {
+            op = char
+            isNum1 = false
         }
     }
-    var res = 0.0f
-    val l = n1.toFloat()
-    val r = n2.toFloat()
-    when (op) {
-        "+" -> res = l + r
-        "-" -> res = l - r
-        "*" -> res = l * r
-        "/" -> res = l / r
+
+    val num1 = num1Str.toFloat()
+    val num2 = num2Str.toFloat()
+
+    return when (op) {
+        '+' -> num1 + num2
+        '-' -> num1 - num2
+        '*' -> num1 * num2
+        '/' -> num1 / num2
+        else -> 0.0f
     }
-    return res
 }
 
 fun zadacha5(string: String): Any {
