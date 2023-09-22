@@ -48,11 +48,9 @@ fun main() {
 fun zadacha1(string: String): String {
     var res = ""
     var counter = 1
-    var i = 1
     var s = string[0]
     for (item in string.substring(1)) {
-        i++
-        if (s != item || i == string.length) {
+        if (s != item) {
             if (counter > 1) {
                 res += "$s$counter"
             } else {
@@ -63,6 +61,11 @@ fun zadacha1(string: String): String {
         } else {
             counter++
         }
+    }
+    if (counter > 1) {
+        res += "$s$counter"
+    } else {
+        res += s
     }
     return res
 }
